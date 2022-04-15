@@ -132,7 +132,7 @@ class _MainPageState extends State<MainPage> {
                                           children: [
                                             MainList(
                                               data: widget.mainMenu[index],
-                                              mainServices: jsonDecode(ussdBox.get(widget.mainMenu[index]['id'])),
+                                              mainServicesId: widget.mainMenu[index]['id'],
                                               bgColor:widget.bgColor,
                                               imageName:widget.imageName,
                                               imageSize:widget.imageSize,

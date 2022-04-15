@@ -23,7 +23,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('Handling a background message ${message.messageId}');
 }
 
-
 late Box ussdBox;
 
 Future<void> main() async {
@@ -54,7 +53,8 @@ Future<void> main() async {
     String c_version = ussdBox.get('CURRENT_VERSION');
      isCurrentVersion = (c_version==packageInfo.version)?true:false;
   }
-  // print(packageInfo.version);
+   print("Version = ");
+   print(packageInfo.version);
 
   if (ussdBox.get('UMS') == null ||
       ussdBox.get('UZMOBILE') == null ||
@@ -68,9 +68,9 @@ Future<void> main() async {
     FromJson writeJson = await FromJson();
     await writeJson.writeHive();
   }
-  //printWrapped(ussdBox.get('1626').toString());
+ // printWrapped(ussdBox.get('201').toString());
     //dev.log(ussdBox.get('269'));3311
-  //Hive.deleteFromDisk();
+ //Hive.deleteFromDisk();
 print(ussdBox.get('NEXT_VERSION'));
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -80,7 +80,6 @@ print(ussdBox.get('NEXT_VERSION'));
 
   runApp(const MyApp());
 }
-
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'high_importance_channel', // id
@@ -101,8 +100,9 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
 
 getToken() async {
-  String token = (await FirebaseMessaging.instance.getToken())!;
-  ussdBox.put('reg_token', token);
+  var token = (await FirebaseMessaging.instance.getToken())!;
+  await ussdBox.put('reg_token', token);
+
   print(token);
 }
   @override
@@ -110,11 +110,11 @@ getToken() async {
     super.initState();
 
     getToken();
-    // getReq(getToken());
+    getUpadteData();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       print("message is received !");
-      getReq();
+      getUpadteData();
     });
 
   }

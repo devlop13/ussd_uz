@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:ussd_uz/main.dart';
 import 'package:ussd_uz/pages/info_page.dart';
@@ -8,7 +10,7 @@ class MainList extends StatelessWidget {
   const MainList({
     Key? key,
     required this.data,
-    required this.mainServices,
+    required this.mainServicesId,
     required this.imageName,
     required this.bgColor,
     required this.imageSize,
@@ -17,7 +19,7 @@ class MainList extends StatelessWidget {
   }) : super(key: key);
 
   final Map<String, dynamic> data;
-  final List<dynamic> mainServices;
+  final String mainServicesId;
   final String imageName;
   final Color bgColor;
   final String imageSize;
@@ -41,7 +43,7 @@ class MainList extends StatelessWidget {
                       bgColor: bgColor,
                       imageName: imageName,
                       imageSize: imageSize,
-                      mainServices: mainServices,
+                      mainServices: jsonDecode(ussdBox.get(mainServicesId)),
                       iconColor:iconColor,
                       isUz:isUz
                     )
@@ -49,7 +51,7 @@ class MainList extends StatelessWidget {
                       bgColor: bgColor,
                       imageName: imageName,
                       imageSize: imageSize,
-                      mainServices: mainServices,
+                      mainServices: jsonDecode(ussdBox.get(mainServicesId)),
                       data: data,
                       iconColor:iconColor,
                       isUz:isUz

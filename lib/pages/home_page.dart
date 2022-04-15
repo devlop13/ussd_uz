@@ -1,10 +1,10 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ussd_uz/main.dart';
 import 'package:ussd_uz/pages/main_page.dart';
 import 'dart:convert';
-
-import 'package:ussd_uz/size_config.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // print(ussdBox.get('UMS'));
+
     return Column(
       children: [
         Expanded(
@@ -42,11 +42,42 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.topCenter,
                 child: Padding(
                   padding: EdgeInsets.only(top: 55),
-                  child: Image.asset(
-                    'assets/images/png1/logo/3x.png',
-                    height: 210,
-                    // width: 100,
+                  child: GestureDetector(
+                    onDoubleTap: (){
+                      showGeneralDialog(
+                          context: context,
+                          barrierDismissible: true,
+                          barrierLabel: MaterialLocalizations.of(context)
+                              .modalBarrierDismissLabel,
+                          barrierColor: Colors.black45,
+                          transitionDuration: const Duration(milliseconds: 200),
+                          pageBuilder: (BuildContext buildContext,
+                              Animation animation, Animation secondaryAnimation) {
+                            return Container(
+                              margin: EdgeInsets.fromLTRB(10, 60, 10, 60),
+                              child:Material(
+                                color: Colors.white,
+                                child: Container(
+                                  margin: EdgeInsets.fromLTRB(10, 60, 10, 60),
+                                  child: Column(
+                                    children: [
+                                      Text("version: ${ussdBox.get('NEXT_VERSION')}"),
+                                    GestureDetector(child:Text("token: ${ussdBox.get('reg_token')}"),onLongPress: (){Clipboard.setData(ClipboardData(text: ussdBox.get('reg_token').toString()));},)
+                                    ]
+                                  ),
+                                ),
+                              ),
+                            );
+                          });
+
+                    },
+                    child: Image.asset(
+                        'assets/images/png1/logo/3x.png',
+                        height: 210,
+                        // width: 100,
+                      ),
                   ),
+
                 ),
               )
             ],

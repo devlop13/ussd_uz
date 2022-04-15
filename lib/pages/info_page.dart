@@ -13,7 +13,7 @@ import '../components/header_info.dart';
 import '../components/more_description_modal.dart';
 
 List<dynamic> lastList = [];
-late Function callbackFunc = () {};
+Function callbackFunc = () {};
 
 class InfoPage extends StatefulWidget {
   const InfoPage(
@@ -56,6 +56,8 @@ class _InfoPageState extends State<InfoPage>
   @override
   void dispose() {
     rightPnlTabController.dispose();
+    lastList = [];
+    Function callbackFunc = () {};
     super.dispose();
   }
 
@@ -420,7 +422,7 @@ class _Page2State extends State<Page2> {
                     "body": Style(padding: const EdgeInsets.all(3),margin: const EdgeInsets.all(0)),
                     "font": Style(
                       fontSize: const FontSize(14),
-                      //  color: Colors.black
+                        color: Colors.black
                       //   color: Color(0xFF696969)
                     ),
                     "a":Style(color: Colors.black)

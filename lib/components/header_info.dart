@@ -16,6 +16,7 @@ class HeaderInfo extends StatelessWidget {
   final String imageName;
   final Color bgColor;
   final Color iconColor;
+
   @override
   Widget build(BuildContext context) {
     return Row(
