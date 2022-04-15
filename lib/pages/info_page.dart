@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,16 +17,16 @@ List<dynamic> lastList = [];
 Function callbackFunc = () {};
 
 class InfoPage extends StatefulWidget {
-  const InfoPage(
-      {Key? key,
-      required this.imageName,
-      required this.bgColor,
-      required this.imageSize,
-      required this.mainServices,
-      required this.data,
-        required this.iconColor,
-        required this.isUz,})
-      : super(key: key);
+  const InfoPage({
+    Key? key,
+    required this.imageName,
+    required this.bgColor,
+    required this.imageSize,
+    required this.mainServices,
+    required this.data,
+    required this.iconColor,
+    required this.isUz,
+  }) : super(key: key);
 
   final String imageName;
   final Color bgColor;
@@ -48,8 +49,7 @@ class _InfoPageState extends State<InfoPage>
   void initState() {
     super.initState();
 
-    rightPnlTabController =
-        TabController(length: 1, vsync: this);
+    rightPnlTabController = TabController(length: 1, vsync: this);
     //Controll1 = rightPnlTabController;
   }
 
@@ -83,7 +83,7 @@ class _InfoPageState extends State<InfoPage>
                   bgColor: widget.bgColor,
                   imageName: widget.imageName,
                   imageSize: widget.imageSize,
-                  iconColor:widget.iconColor,
+                  iconColor: widget.iconColor,
                 ),
               ),
               Expanded(
@@ -188,9 +188,10 @@ class _Page2State extends State<Page2> {
                   _isOpen[openIndex] = false;
                 }
                 openIndex = i;
-                String a = (service[i]['description']!="")?service[i]['description']!.replaceAll("\n",""):service[i]['description'];
-                if (a == "" &&
-                    service[i]['code'] == "") {
+                String a = (service[i]['description'] != "")
+                    ? service[i]['description']!.replaceAll("\n", "")
+                    : service[i]['description'];
+                if (a == "" && service[i]['code'] == "") {
                   lastList = service;
                   service = jsonDecode(ussdBox.get(service[i]['id']));
                   openIndex = -1;
@@ -213,7 +214,9 @@ class _Page2State extends State<Page2> {
             children: List.generate(
               service.length,
               (i) {
-                String a = (service[i]['description']!="")?service[i]['description']!.replaceAll("\n",""):service[i]['description'];
+                String a = (service[i]['description'] != "")
+                    ? service[i]['description']!.replaceAll("\n", "")
+                    : service[i]['description'];
                 if (a != "") {
                   var tableData = {};
                   bool isJson = false;
@@ -283,47 +286,64 @@ class _Page2State extends State<Page2> {
                       color: Colors.transparent,
                       child: Column(children: [
                         Container(
-                          padding: const EdgeInsets.only(left: 16,top: 0,bottom: 16,right: 13),
+                          padding: const EdgeInsets.only(
+                              left: 16, top: 0, bottom: 16, right: 13),
                           child: (!isJson)
-                              ? Html(
-                                  data: (widget.isUz)
-                                      ? service[i]['short_description']
-                                      : service[i]['description'],
-                                  onLinkTap: (String? url,
-                                      RenderContext context,
-                                      Map<String, String> attributes,
-                                      element) {
-                                    launch(url!);
-                                  },
-                                  shrinkWrap: true,
-                                  style: {
-                                    "p": Style(
-                                      fontSize: const FontSize(12.2),
+                              ? Column(children: [
+                                  if (service[i]['news_date'] != "")
+                                    Container(
+                                      width: double.infinity,
+                                      margin: EdgeInsets.only(bottom: 6,top: 2),
+                                      child: Text(
+                                        service[i]['news_date'],
+                                        textAlign: TextAlign.end,
+                                        style: TextStyle(
+                                            color: Color(0xFF767573),
+                                            fontSize: 12.2),
+                                      ),
                                     ),
-                                    "li": Style(
-                                      fontSize: const FontSize(12.2),
-                                    ),
-                                    "a": Style(
-                                      fontSize: const FontSize(12.2),
-                                      color: Colors.black
-                                    ),
-                                    "font": Style(
-                                      fontSize: const FontSize(12.2),
-                                    ),
-                                    "*": Style(fontSize: const FontSize(12.2),padding: const EdgeInsets.all(0),margin: const EdgeInsets.all(0)),
-                                  },
-                                  customRender: {},
-                                )
+                                  Html(
+                                    data: (widget.isUz)
+                                        ? service[i]['short_description']
+                                        : service[i]['description'],
+                                    onLinkTap: (String? url,
+                                        RenderContext context,
+                                        Map<String, String> attributes,
+                                        element) {
+                                      launch(url!);
+                                    },
+                                    shrinkWrap: true,
+                                    style: {
+                                      "p": Style(
+                                        fontSize: const FontSize(12.2),
+                                      ),
+                                      "li": Style(
+                                        fontSize: const FontSize(12.2),
+                                      ),
+                                      "a": Style(
+                                          fontSize: const FontSize(12.2),
+                                          color: Colors.black),
+                                      "font": Style(
+                                        fontSize: const FontSize(12.2),
+                                      ),
+                                      "*": Style(
+                                          fontSize: const FontSize(12.2),
+                                          padding: const EdgeInsets.all(0),
+                                          margin: const EdgeInsets.all(0)),
+                                    },
+                                    customRender: {},
+                                  ),
+                                ])
                               : _DescriptionTable(tableData['data']),
                         ),
                         if (service[i]['activate'] != "" &&
                             service[i]['code'] != "")
                           ActivateButton(
-                              text: service[i]['activate'],
-                              code: service[i]['code'],
-                              bgColor: widget.bgColor,
-                              textColor:widget.iconColor,
-                              isUz: widget.isUz,
+                            text: service[i]['activate'],
+                            code: service[i]['code'],
+                            bgColor: widget.bgColor,
+                            textColor: widget.iconColor,
+                            isUz: widget.isUz,
                           ),
                         Container(
                           padding: const EdgeInsets.only(
@@ -349,19 +369,22 @@ class _Page2State extends State<Page2> {
                                   ),
                                 if (service[i]['activate'] != "" &&
                                     service[i]['base_code'] != "" &&
-                                    service[i]['code'].trim()[0] == "*"
-                                )
+                                    service[i]['code'].trim()[0] == "*")
                                   IconButton(
-                                    onPressed: (){
-                                      Share.share((widget.isUz)?"Kompaniya: ${service[i]['provider']}\nXizmat turi: ${(widget.isUz)?service[i]['name']:service[i]['name_ru']}\nFaollashtirish kodi: ${service[i]['code']}\n\n\n https://play.google.com/store/apps/details?id=uz.mobileprovider":"Компания: ${service[i]['provider']}\nТип обслуживания: ${(widget.isUz)?service[i]['name_ru']:service[i]['name_ru']}\nКод активации: ${service[i]['code']}\n\n\n https://play.google.com/store/apps/details?id=uz.mobileprovider");
+                                    onPressed: () {
+                                      Share.share((widget.isUz)
+                                          ? "Kompaniya: ${service[i]['provider']}\nXizmat turi: ${(widget.isUz) ? service[i]['name'] : service[i]['name_ru']}\nFaollashtirish kodi: ${service[i]['code']}\n\n\n https://play.google.com/store/apps/details?id=uz.mobileprovider"
+                                          : "Компания: ${service[i]['provider']}\nТип обслуживания: ${(widget.isUz) ? service[i]['name_ru'] : service[i]['name_ru']}\nКод активации: ${service[i]['code']}\n\n\n https://play.google.com/store/apps/details?id=uz.mobileprovider");
                                     },
                                     icon: const Icon(Icons.share_outlined),
                                     iconSize: 22,
-                                    visualDensity: const VisualDensity(vertical: VisualDensity.minimumDensity,horizontal: VisualDensity.minimumDensity),
+                                    visualDensity: const VisualDensity(
+                                        vertical: VisualDensity.minimumDensity,
+                                        horizontal:
+                                            VisualDensity.minimumDensity),
                                   ),
                               ]),
                         )
-
                       ]),
                     ),
                     isExpanded: _isOpen[i],
@@ -403,11 +426,11 @@ class _Page2State extends State<Page2> {
           } else if (strname == "" ||
               strname == "<b><\/b>" ||
               strname == "<b></b>" ||
-              strname == "<center><fontsize=6color=#696969><\/font><\/center>") {
+              strname ==
+                  "<center><fontsize=6color=#696969><\/font><\/center>") {
             flex1 = 1;
             flex2 = 1200;
           }
-
 
 // print(descriptions[index]['name']+"Valuesi = "+strval);
           return Row(
@@ -419,13 +442,14 @@ class _Page2State extends State<Page2> {
                 child: Html(
                   data: descriptions[index]['name'],
                   style: {
-                    "body": Style(padding: const EdgeInsets.all(3),margin: const EdgeInsets.all(0)),
-                    "font": Style(
-                      fontSize: const FontSize(14),
-                        color: Colors.black
-                      //   color: Color(0xFF696969)
-                    ),
-                    "a":Style(color: Colors.black)
+                    "body": Style(
+                        padding: const EdgeInsets.all(3),
+                        margin: const EdgeInsets.all(0)),
+                    "font":
+                        Style(fontSize: const FontSize(14), color: Colors.black
+                            //   color: Color(0xFF696969)
+                            ),
+                    "a": Style(color: Colors.black)
                   },
                 ),
               ),
@@ -435,13 +459,15 @@ class _Page2State extends State<Page2> {
                   shrinkWrap: true,
                   data: descriptions[index]['value'],
                   style: {
-                    "body": Style(textAlign: TextAlign.end,padding: const EdgeInsets.all(0),margin: const EdgeInsets.all(0)),
+                    "body": Style(
+                        textAlign: TextAlign.end,
+                        padding: const EdgeInsets.all(0),
+                        margin: const EdgeInsets.all(0)),
                     "font": Style(
                       fontSize: const FontSize(14),
-
                     ),
-                    "a":Style(color: Colors.black),
-                    "*":Style(textAlign: TextAlign.end)
+                    "a": Style(color: Colors.black),
+                    "*": Style(textAlign: TextAlign.end)
                   },
                 ),
               ),
