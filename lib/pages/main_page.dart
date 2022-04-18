@@ -158,9 +158,56 @@ class _MainPageState extends State<MainPage> {
                     Expanded(
                       flex: 1,
                       child: Container(
-                        child: Image.asset(
-                          widget.imageName,
-                          height: 50,
+                        margin: EdgeInsets.only(top: 8,left: 7,right: 7),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                            'assets/images/gr_4x/Group-2.png',
+                            height: 45,
+                          ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Image.asset(
+                                'assets/images/gr_4x/Group-3.png',
+                                height: 45,
+                              ),
+                            ),
+                            Image.asset(
+                              'assets/images/gr_4x/Group-1.png',
+                              height: 45,
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Image.asset(
+                                'assets/images/gr_4x/Group-4.png',
+                                height: 45,
+                              ),
+                            ),
+                            Image.asset(
+                              'assets/images/gr_4x/Group-5.png',
+                              height: 45,
+                              color: Color(0xFF4d4d4c),
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Image.asset(
+                                'assets/images/gr_4x/Frame.png',
+                                height: 45,
+                              ),
+                            ),
+                            Image.asset(
+                              'assets/images/gr_4x/Frame 2.png',
+                              height: 45,
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Image.asset(
+                                'assets/images/gr_4x/Group.png',
+                                height: 45,
+                              ),
+                            ),
+                          ]
                         ),
                       ),
                     ),

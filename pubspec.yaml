@@ -90,9 +90,10 @@ flutter:
     - assets/images/png1/arrowsno/
     - assets/images/png1/arrowsno/3x/
     - assets/images/png1/arrowsno/2x/
-    - assets/images/png1/arrowsno/1x/
     - assets/images/png1/logo/
     - assets/images/png1/logo_com/
+    - assets/images/gr_4x/
+    - assets/images/home_icon4x/
     - assets/jsons/
 
   # An image asset can refer to one or more resolution-specific "variants", see

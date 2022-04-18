@@ -273,7 +273,7 @@ class _HomePageState extends State<HomePage> {
                             MaterialPageRoute(
                               builder: (context) => MainPage(
                                 bgColor: const Color(0xFF0093dd),
-                                imageName: 'assets/images/png/uztelecom.png',
+                                imageName: 'assets/images/png1/logo_com/uztelecom 3x.png',
                                 imageSize: '35',
                                 mainMenu:  jsonDecode(ussdBox.get('4')),
                                   iconColor:Colors.white
