@@ -19,7 +19,6 @@ class MainPage extends StatefulWidget {
     required this.mainMenu,
     required this.iconColor
   }) : super(key: key);
-
   final String imageName;
   final Color bgColor;
   final String imageSize;

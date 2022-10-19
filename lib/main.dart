@@ -68,9 +68,7 @@ Future<void> main() async {
     FromJson writeJson = await FromJson();
     await writeJson.writeHive();
   }
- // printWrapped(ussdBox.get('201').toString());
-    //dev.log(ussdBox.get('269'));3311
- //Hive.deleteFromDisk();
+
 print(ussdBox.get('NEXT_VERSION'));
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

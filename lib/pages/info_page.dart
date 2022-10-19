@@ -236,7 +236,7 @@ class _Page2State extends State<Page2> {
                       isJson = true;
                     } on Exception catch (e) {
                       print(
-                          "you have some error on : convert json to string in the infotab_page.dart !");
+                          "you have some error on: convert json to string in the infotab_page.dart !");
                     }
                   }
 

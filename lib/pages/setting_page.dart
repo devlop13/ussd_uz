@@ -14,6 +14,7 @@ class SettingPage extends StatefulWidget {
 
   final bool isUz;
 
+
   @override
   State<SettingPage> createState() => _SettingPageState();
 }

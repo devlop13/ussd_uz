@@ -9,7 +9,7 @@ try{
   }
 print(code);
   await UssdAdvanced.sendUssd(code: code);
-  print("Success !");
+  print("Successfully dne !");
 }catch(e){
   print("error code ${e} - ${e}");
 }
