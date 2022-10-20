@@ -112,6 +112,7 @@ getToken() async {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       print("message is received !");
+      
       getUpadteData();
     });
 
