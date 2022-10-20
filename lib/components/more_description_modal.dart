@@ -27,6 +27,7 @@ MoreDescriptionModal(context, i, service,isUz) => showGeneralDialog(
                   width: MediaQuery.of(context).size.width - 30,
                   height: MediaQuery.of(context).size.height - 160,
 // padding: EdgeInsets.only(bottom: 100),
+
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.only(top: 10, bottom: 10),
                     child: Html(
@@ -51,7 +52,6 @@ MoreDescriptionModal(context, i, service,isUz) => showGeneralDialog(
                         color: Colors.grey,
                         offset: const Offset(0, 1.5),
                         spreadRadius: 0.01,
-//(x,y)
                         blurRadius: 3.0,
                       ),
                     ],

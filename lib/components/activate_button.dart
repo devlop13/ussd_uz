@@ -35,6 +35,7 @@ class ActivateButton extends StatelessWidget {
             onPressed: () {
               sendUssdMessage(code);
             },
+            
             // padding: EdgeInsets.fromLTRB(10.0, 2.0, 10.0, 2.0),
             child: Text(
                 textContent.toUpperCase(),
