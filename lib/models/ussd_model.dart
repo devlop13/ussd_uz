@@ -9,7 +9,7 @@ class UssdModel {
 
   Future<Map<String,dynamic>> getUms()async{
     Box ussdBox = await Hive.openBox('ussdBox');
-    // Hive.box('ussdBox')
+
     return ussdBox.get('UMS');
   }
 

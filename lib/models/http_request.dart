@@ -5,11 +5,11 @@ import 'package:http/http.dart' as http;
 import '../main.dart';
 
 void getUpadteData() async {
-// print(ussdBox.get('NEXT_VERSION'));
+
   while (true) {
     var locUrl = Uri.parse('http://ussd.uz/update/${ussdBox.get('NEXT_VERSION')}.json');
     var res = await http.get(locUrl);
-    // print(res.body);
+  
 
     if (res.statusCode == 200) {
       bool isAvialable = true;

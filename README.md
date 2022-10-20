@@ -1,6 +1,11 @@
 # ussd_uz
 
-A new Flutter project.
+### Information for Ussd companies 
+
+- `Uztelecom`
+- `UMS`
+- `Beeline`
+- `Huans`
 
 ## Getting Started
 
