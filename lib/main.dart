@@ -53,7 +53,7 @@ Future<void> main() async {
     String c_version = ussdBox.get('CURRENT_VERSION');
      isCurrentVersion = (c_version==packageInfo.version)?true:false;
   }
-   print("Version = ");
+   print("version = ");
    print(packageInfo.version);
 
   if (ussdBox.get('UMS') == null ||
@@ -111,7 +111,7 @@ getToken() async {
     getUpadteData();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
-      print("message is received !");
+      print("message is received!");
       
       getUpadteData();
     });

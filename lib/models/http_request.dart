@@ -55,7 +55,7 @@ void getUpadteData() async {
         break;
       }
     } else {
-      print("Status code isn't 200 it is equal : ${res.statusCode}");
+      print("Status code isn't 200 it is equal: ${res.statusCode}");
       break;
     }
   }
@@ -127,8 +127,7 @@ bool editContent(key, editingData) {
   String parentId = ussdBox.get('parent_' + key).toString();
   var parentData = jsonDecode(ussdBox.get(parentId).toString());
   editingData['id'] = key;
-//  print("child id = "+key);
-//print("parent id = "+parentId);
+
   if (parentData != null && parentData != "") {
     for (int i = 0; i < parentData.length; i++) {
       if (parentData[i]['id'] == key) {
@@ -157,8 +156,3 @@ Future<bool> updateNewVersion(regId, version,oldRegId) async {
   }
   return true;
 }
-
-// void printWrapped(String text) {
-//   final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
-//   pattern.allMatches(text).forEach((match) => print(match.group(0)));
-// }
