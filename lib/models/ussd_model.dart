@@ -23,6 +23,7 @@ class UssdModel {
     return ussdBox.get('BEELINE');
   }
 
+
   Future<Map<String, dynamic>> getUcell() async {
     ussdBox = Hive.box('ussdBox');
     return ussdBox.get('UCELL');
