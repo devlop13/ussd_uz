@@ -21,13 +21,15 @@ late Function callbackFunc = () {};
 
 class InfotabPage extends StatefulWidget {
   const InfotabPage(
-      {Key? key,
+      {
+        Key? key,
       required this.imageName,
       required this.bgColor,
       required this.imageSize,
       required this.mainServices,
-        required this.iconColor,
-      required this.isUz,})
+      required this.iconColor,
+      required this.isUz,
+      })
       : super(key: key);
 
   final String imageName;

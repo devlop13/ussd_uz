@@ -19,9 +19,6 @@ class FromJson {
 
     data = data['data'] as Map<String, dynamic>;
 
-    // for(int i=0;i<data.length-1;i++){
-    //     Map<String,dynamic> ussd = {'id':data['UMS']['id']};
-    // }
 
     data.forEach((key, ussd) {
       if (key == 'UMS' ||
@@ -109,7 +106,8 @@ class FromJson {
     // ussdBox.put('ucell', jsonEncode(data['data']['UCELL']));
     // ussdBox.put('beeline', jsonEncode(data['data']['BEELINE']));
     // ussdBox.put('uzmobile', jsonEncode(data['data']['UZMOBILE']));
-    print('done !!!');
+    print('done mess!!!');
+
   }
 
 }
