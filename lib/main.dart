@@ -37,11 +37,11 @@ Future<void> main() async {
       AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
 
-  // await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-  //   alert: true,
-  //   badge: true,
-  //   sound: true,
-  // );
+  ////// await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+  /////   alert: true,
+  /////   badge: true,
+  /////   sound: true,
+  //// );
 
   await Hive.initFlutter();
   ussdBox = await Hive.openBox("ussdBox");
@@ -53,7 +53,7 @@ Future<void> main() async {
     String c_version = ussdBox.get('CURRENT_VERSION');
      isCurrentVersion = (c_version==packageInfo.version)?true:false;
   }
-   print("version = ");
+   print("version is equal = ");
    print(packageInfo.version);
 
   if (ussdBox.get('UMS') == null ||
