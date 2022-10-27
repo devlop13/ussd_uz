@@ -6,7 +6,7 @@ import 'package:ussd_uz/main.dart';
 import 'package:ussd_uz/pages/main_page.dart';
 import 'dart:convert';
 
-
+// Home page for entery file to project
 class HomePage extends StatefulWidget {
  const  HomePage({Key? key}) : super(key: key);
 
