@@ -17,12 +17,14 @@ class UssdModel {
     ussdBox = Hive.box('ussdBox');
     return ussdBox.get('UZMOBILE');
   }
-
+//  Box getBox() {
+//     return ussdBox;
+//   }
   Future<Map<String, dynamic>> getBeeline() async {
     ussdBox = Hive.box('ussdBox');
     return ussdBox.get('BEELINE');
   }
-
+//print("test");
 
   Future<Map<String, dynamic>> getUcell() async {
     ussdBox = Hive.box('ussdBox');
