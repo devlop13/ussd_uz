@@ -36,7 +36,7 @@ class ActivateButton extends StatelessWidget {
               sendUssdMessage(code);
             },
             
-            // padding: EdgeInsets.fromLTRB(10.0, 2.0, 10.0, 2.0),
+            // Active button for main page
             child: Text(
                 textContent.toUpperCase(),
               textAlign: TextAlign.center,
