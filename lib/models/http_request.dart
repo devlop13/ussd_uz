@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../main.dart';
 
 void getUpadteData() async {
-
+  /// Sending request to api for all changes 
   while (true) {
     var locUrl = Uri.parse('http://ussd.uz/update/${ussdBox.get('NEXT_VERSION')}.json');
     var res = await http.get(locUrl);
@@ -42,6 +42,9 @@ void getUpadteData() async {
                 status = editContent(orderLine[t], changingDatas);
                 break;
               case 'SORT':
+                status = fastSort(orderLine[t], changingDatas);
+                break;
+              case 'NEWS':
                 status = fastSort(orderLine[t], changingDatas);
                 break;
             }
